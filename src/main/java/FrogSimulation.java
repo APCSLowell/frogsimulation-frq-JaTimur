@@ -18,19 +18,19 @@ public class FrogSimulation
 		int sum=0;
 		for(int n=0;n<maxHops;n++){
 			sum+=hopDistance();
+			if(sum<0) return false;
+			else if(sum>=goalDistance) return true;
 		}
-		return sum>=goalDistance;
+		return false;
 	}
 	
 	public double runSimulations(int num)
 	{ 
-		int pass=0;
-		int fail=0;
+		double pass=0;
 		for(int n=0;n<num;n++){
 			if(simulate()) pass++;
-			else fail++;
 		}
-		return (double)pass/fail;
+		return pass/num;
 	}
 	
 	
